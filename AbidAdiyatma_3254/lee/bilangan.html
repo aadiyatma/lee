@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cek Bilangan Prima</title>
+<script>
+var num, i, chk;
+function cekBilanganPrima() {
+    num = parseInt(document.getElementById("num").value);
+
+    if (num) {
+        chk = 0;
+        var temp = document.getElementById("tampilan");
+        temp.style.display = "block";
+        
+        // Periksa apakah num kurang dari 2
+        if (num < 2) {
+            document.getElementById("hasil").innerHTML = "bukan bilangan prima";
+            return;
+        }
+
+        for (i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                chk++;
+                break;
+            }
+        }
+
+        if (chk === 0) {
+            document.getElementById("hasil").innerHTML = "bilangan prima.";
+        } else {
+            document.getElementById("hasil").innerHTML = "bukan bilangan prima";
+        }
+    }
+}
+</script>
+</head>
+<body>
+<h3>Menentukan Bilangan Prima atau Bukan</h3>
+<p>Masukkan sembarang bilangan: <input id="num">&nbsp;<button onclick="cekBilanganPrima()">Cek</button></p>
+<p id="tampilan" style="display:none;">Bilangan tersebut <span id="hasil"></span></p>
+</body>
+</html>
